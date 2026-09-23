@@ -1,208 +1,137 @@
 # Planificador de Contenidos B2C — Sommos
 
-## Objetivo
+## 1. Propósito
 
-Transformar la información disponible de un **proyecto de Sommos** en un calendario mensual de marketing B2C listo para planificación, producción y seguimiento.
+Este Skill transforma la información de un proyecto de Sommos en un **calendario mensual de contenidos B2C**.
 
-El Skill utiliza como fuente principal el **contexto del proyecto**, donde se encuentra la información específica sobre:
+Su función es definir:
 
-- Producto, Proyecto, Aliado o entidad, País, Moneda, Público, Segmentación, Objetivos, Beneficios, Características, Mecánica, Tono, Fechas, Lineamientos, Punto de conversión, Cualquier otra información relevante.
-
-La función de este Skill es **convertir esa información en una estrategia y calendario de contenidos B2C**.
-
-No debe redefinir el contexto del proyecto ni inventar información que no esté disponible.
+- Qué contenido publicar.
+- Cuándo publicarlo.
+- En qué canal.
+- Con qué objetivo.
+- Dentro de qué pilar.
+- En qué formato.
+- Qué tema o idea debe desarrollarse.
 
 ---
 
-# 1. Fuente de información
+## 2. Fuente de información
 
-El contexto del proyecto es la **fuente principal de verdad**.
+El **contexto del proyecto** es la fuente principal de verdad.
 
-Antes de crear el calendario, revisar la información disponible del proyecto.
+Puede contener información como:
 
-No inventar ni asumir:
+- Producto.
+- Aliado o entidad.
+- País.
+- Moneda.
+- Público.
+- Segmentación.
+- Objetivos.
+- Necesidades.
+- Beneficios.
+- Características.
+- Mecánica.
+- Tono.
+- Fechas.
+- Lineamientos.
+- Canales de conversión.
+- Campañas activas.
 
-- Características del producto.
+Cada proyecto debe tratarse de forma independiente.
+
+No utilizar automáticamente información de otros proyectos de Sommos.
+
+No inventar:
+
 - Beneficios.
 - Tasas.
 - Montos.
 - Promociones.
 - Condiciones.
-- Público.
-- Segmentación.
+- Funcionalidades.
 - Fechas.
 - Testimonios.
 - Resultados.
-- Mecánicas.
-- Funcionalidades.
-- Canales de conversión.
+- Características del producto.
 
-No utilizar automáticamente información de otros proyectos de Sommos.
-
-Cada proyecto debe tratarse de forma independiente.
-
-Si una información necesaria para crear una pieza no está disponible, utilizar:
+Si falta información necesaria para planificar un contenido, utilizar:
 
 `[VALIDAR]`
 
-Si el contexto del proyecto contiene una instrucción específica sobre frecuencia, canales, tono o cantidad de contenidos, esa información tiene prioridad sobre las reglas generales de este Skill.
+Si el contexto del proyecto establece una frecuencia, canal, tono o cantidad de contenidos específica, esa instrucción tiene prioridad sobre las reglas generales de este Skill.
 
 ---
 
-# 2. Solicitud del usuario
+## 3. Solicitud y periodo
 
-El usuario normalmente utilizará este Skill indicando:
+El usuario puede solicitar un calendario indicando el proyecto o producto y el mes que desea planificar.
 
-> "Usa este skill para hacer un plan de contenidos para [PROYECTO/PRODUCTO] de [MES]."
-
-Ejemplos:
+Ejemplo:
 
 > "Haz un plan de contenidos para ProAhorro de octubre."
 
-> "Usa este skill para planificar MetaAhorro para noviembre."
+El Skill debe interpretar el proyecto/producto y el periodo solicitado utilizando el contexto disponible del proyecto.
 
-El Skill debe interpretar el nombre del proyecto/producto y el mes indicado junto con el contexto disponible del proyecto.
+El calendario debe cubrir **únicamente el mes solicitado**.
 
-Si el usuario proporciona información adicional en la solicitud, esta debe considerarse junto con el contexto del proyecto.
+Si el año no está indicado, utilizar el año actual, salvo que el contexto del proyecto indique otro año.
 
----
-
-# 3. Periodo de planificación
-
-El calendario debe construirse **siempre por mes**.
-
-El mes indicado por el usuario corresponde al periodo completo de planificación.
-
-### Reglas
-
-1. Identificar el mes solicitado.
-2. Identificar el año correspondiente.
-3. Determinar el primer y último día del mes.
-4. Crear publicaciones únicamente dentro de ese periodo.
-5. Considerar las fechas relevantes del proyecto que ocurran durante ese mes.
-6. Distribuir las publicaciones de forma lógica durante el mes.
-7. No crear publicaciones fuera del mes solicitado.
-
-### Ejemplo
-
-Si el usuario solicita:
-
-> "Plan de contenidos para ProAhorro de octubre."
-
-El calendario debe corresponder únicamente a:
-
-**01/10 – 31/10**
-
-No incluir septiembre ni noviembre salvo que el usuario lo solicite.
-
-Si el año no está indicado, utilizar el año actual, salvo que el contexto del proyecto indique explícitamente otro año.
+Las publicaciones deben mantenerse dentro del primer y último día del mes solicitado y ordenarse cronológicamente.
 
 ---
 
-# 4. Frecuencia de contenidos
+## 4. Frecuencia y canales
+
+### Frecuencia
 
 La frecuencia base es:
 
 **1 contenido B2C por semana.**
 
-Esto equivale aproximadamente a:
+Esto equivale aproximadamente a 4–5 publicaciones por mes.
 
-- 4 contenidos en un mes de 4 semanas.
-- 5 contenidos en un mes que incluya 5 semanas de planificación.
+La cantidad puede aumentar cuando el contexto del proyecto lo justifique, por ejemplo:
 
-Esta frecuencia busca mantener una presencia B2C constante sin saturar el calendario general de Sommos, considerando que Sommos también trabaja comunicación B2B.
+- Lanzamientos.
+- Campañas de duración limitada.
+- Promociones.
+- Eventos.
+- Fechas comerciales relevantes.
+- Activaciones específicas.
 
-### Excepciones
+No agregar publicaciones únicamente para llenar el calendario.
 
-La frecuencia puede aumentar cuando el contexto del proyecto lo justifique, por ejemplo:
+Priorizar:
 
-- Lanzamiento.
-- Campaña de duración limitada.
-- Promoción.
-- Fecha comercial relevante.
-- Evento.
-- Activación específica.
-- Necesidad puntual de comunicación.
+**calidad + relevancia + coherencia estratégica**
 
-No crear publicaciones adicionales únicamente para llenar espacios.
+sobre cantidad.
 
-Cada contenido debe tener una función estratégica.
+### Canal
 
-### Distribución recomendada
-
-Cuando el proyecto lo permita, construir una secuencia mensual como:
-
-1. Problema / necesidad.
-2. Educación / solución.
-3. Producto / beneficio.
-4. Conversión / CTA.
-
-Esta estructura es orientativa y debe adaptarse al proyecto.
-
----
-
-# 5. Canales
-
-Por defecto, trabajar principalmente con:
+El canal por defecto es:
 
 - **Facebook**
-- **Instagram**
 
-Facebook es el canal principal salvo que el contexto del proyecto indique lo contrario.
-
-Instagram se considera un canal secundario o complementario.
-
-No es obligatorio generar contenido para ambos canales.
-
-Si una pieza está destinada únicamente a Facebook, utilizar Facebook.
-
-Si una pieza necesita una adaptación específica para Instagram, tratarla como una adaptación independiente cuando corresponda.
-
-No incorporar otros canales salvo que el usuario lo solicite.
-
-### Adaptación por canal
-
-No duplicar automáticamente el mismo contenido en Facebook e Instagram.
-
-Evaluar si la pieza:
-
-- Funciona igual en ambos canales.
-- Necesita una adaptación de formato.
-- Necesita una adaptación del copy.
-- Necesita una adaptación del enfoque.
-
-Si la misma pieza puede utilizarse en ambos canales sin cambios relevantes, puede indicarse ambos canales en una misma fila.
-
-Si requiere una adaptación específica, crear una fila independiente.
+No incorporar otros canales salvo que el usuario lo solicite explícitamente.
 
 ---
 
-# 6. Definir la estrategia de contenidos
+## 5. Estrategia de contenidos
 
-Antes de construir el calendario:
+Antes de crear el calendario:
 
 1. Revisar el objetivo del proyecto.
-2. Revisar el público y segmentación.
-3. Identificar necesidades y problemas relevantes.
-4. Identificar beneficios y características que deben comunicarse.
-5. Determinar los temas que deben trabajarse.
-6. Definir los pilares de contenido.
-7. Distribuir los contenidos durante el mes.
-8. Crear una secuencia lógica de comunicación.
+2. Revisar el público y sus necesidades.
+3. Identificar los principales problemas, intereses o necesidades que el producto puede abordar.
+4. Identificar los beneficios y características que pueden comunicarse.
+5. Definir entre **3 y 5 pilares de contenido**.
+6. Distribuir los contenidos durante el mes.
+7. Crear una secuencia lógica de comunicación.
 
-La estrategia debe responder al proyecto específico.
-
-El contenido debe acompañar al usuario desde la identificación de una necesidad hasta la comprensión del producto y, cuando corresponda, hacia una acción concreta.
-
-No es necesario que todos los meses sigan exactamente la misma estructura.
-
----
-
-# 7. Pilares de contenido
-
-Definir entre **3 y 5 pilares** relevantes para el proyecto.
-
-Algunos ejemplos:
+Los pilares pueden incluir, según corresponda:
 
 - Educación.
 - Problema / necesidad.
@@ -218,203 +147,43 @@ Algunos ejemplos:
 
 No utilizar todos automáticamente.
 
-Seleccionar los pilares que tengan sentido según:
+El calendario debe evitar ser exclusivamente promocional.
 
-- Objetivo.
-- Público.
-- Producto.
-- Momento del proyecto.
-- Duración de la campaña.
-- Etapa del usuario.
+Cuando sea relevante, combinar contenidos de:
 
-Los pilares deben servir para organizar estratégicamente el contenido y evitar que todas las publicaciones tengan el mismo enfoque.
+**educación → necesidad → solución → producto → consideración → conversión**
+
+La secuencia debe adaptarse al proyecto y no aplicarse de forma rígida.
 
 ---
 
-# 8. Distribución de contenidos
+## 6. Definición de cada contenido
 
-Distribuir los contenidos considerando:
+Cada publicación debe definir:
 
-- Objetivo del proyecto.
-- Público.
-- Frecuencia mensual.
-- Etapa del usuario.
-- Características del producto.
-- Fechas importantes.
-- Campañas activas.
-- Canales disponibles.
+### Objetivo
 
-Evitar que todas las publicaciones sean promocionales.
-
-Cuando corresponda, combinar:
-
-- Educación.
-- Identificación del problema.
-- Producto.
-- Beneficios.
-- Confianza.
-- Conversión.
-
-Con una frecuencia de aproximadamente 1 contenido por semana, priorizar **calidad y relevancia sobre cantidad**.
-
-No crear publicaciones únicamente para completar una cantidad determinada.
-
----
-
-# 9. Crear ideas de contenido
-
-Cada idea debe ser concreta y suficientemente clara para pasar a producción.
-
-Evitar ideas demasiado generales como:
-
-> "Post sobre beneficios."
-
-> "Hablar sobre ahorro."
-
-> "Mostrar el producto."
-
-Preferir ideas que indiquen claramente qué se quiere comunicar y desde qué enfoque.
-
-Ejemplo:
-
-> "Carrusel: presentar 3 beneficios de ProAhorro relacionados con la planificación del ahorro. Primera lámina: plantear una pregunta sobre cómo prepararse para diciembre. Luego, explicar cada beneficio de forma breve y cerrar con un CTA para conocer cómo funciona."
-
-Otro ejemplo:
-
-> "Reel: mostrar el proceso para configurar una meta de ahorro dentro de la aplicación, desde el ingreso al producto hasta la selección del monto y plazo."
-
-La idea debe indicar claramente **qué se comunica, qué debería mostrar la pieza y cuál es el enfoque**.
-
----
-
-# 10. Tema / idea como guía para la pieza gráfica
-
-La columna **"Tema / idea"** debe servir como una guía directa para desarrollar la pieza gráfica o audiovisual.
-
-No debe limitarse a indicar el tema general de la publicación.
-
-Debe explicar de forma concreta:
-
-- Qué se quiere comunicar.
-- Qué debería mostrar la pieza.
-- Qué ángulo utilizar.
-- Qué información debería contener.
-- Cómo se relaciona con el producto cuando sea relevante.
-- Qué estructura puede tener la pieza cuando sea útil para producción.
-
-La persona encargada de diseño debe poder utilizar esta columna como **briefing inicial** para desarrollar la pieza.
-
-### Ejemplo incorrecto
-
-> "Beneficios de ProAhorro."
-
-### Ejemplo correcto
-
-> "Carrusel: presentar 3 beneficios de ProAhorro. Primera lámina: pregunta relacionada con la preparación para diciembre. Luego, explicar cada beneficio de forma breve y cerrar con CTA para conocer cómo funciona."
-
-### Otro ejemplo
-
-> "Post estático: comunicar que el usuario puede establecer una meta de ahorro y organizar sus aportes. La pieza debe destacar la acción principal y mostrar de manera sencilla cómo el producto ayuda a mantener el objetivo."
-
-La idea debe ser suficientemente específica para orientar el diseño, pero no necesariamente definir cada detalle visual.
-
-No es necesario indicar:
-
-- Colores exactos.
-- Tipografías.
-- Posiciones exactas de elementos.
-- Dimensiones.
-- Recursos gráficos específicos.
-
-Salvo que esa información forme parte de los lineamientos del proyecto o el usuario la solicite.
-
----
-
-# 11. Crear el copy
-
-Crear un copy adaptado al contenido y al canal.
-
-El copy debe:
-
-- Mantener el tono del proyecto.
-- Hablarle al público correspondiente.
-- Ser coherente con la pieza gráfica.
-- Desarrollar la idea central.
-- Incluir el CTA cuando corresponda.
-- Utilizar correctamente la terminología del proyecto.
-- Utilizar la moneda correspondiente cuando sea necesario.
-- Ser adecuado para el canal seleccionado.
-
-El copy debe ser suficientemente claro para utilizarse como base de publicación.
-
-No inventar:
-
-- Beneficios.
-- Tasas.
-- Montos.
-- Promociones.
-- Condiciones.
-- Funcionalidades.
-- Resultados.
-- Testimonios.
-- Datos de desempeño.
-
-Si falta un dato necesario:
-
-`[VALIDAR]`
-
----
-
-# 12. Call to Action
-
-El CTA debe corresponder al objetivo de la publicación y a la acción que realmente puede realizar el usuario.
+Indica para qué existe la publicación.
 
 Ejemplos:
 
-- Conoce más.
-- Descarga la app.
-- Regístrate.
-- Empieza a ahorrar.
-- Configura tu meta.
-- Abre tu cuenta.
-- Completa el formulario.
-- Acércate a una agencia.
-- Conoce cómo funciona.
-- Empieza hoy.
+- Educar.
+- Generar awareness.
+- Explicar el producto.
+- Mostrar un beneficio.
+- Explicar el funcionamiento.
+- Resolver una objeción.
+- Generar interés.
+- Generar registros.
+- Generar descargas.
+- Generar conversión.
+- Recordar una acción.
 
-No utilizar CTA que impliquen acciones que el producto no permite.
+### Formato
 
-El CTA debe ser coherente con el nivel de intención del usuario.
+Seleccionar el formato que mejor ayude a comunicar el objetivo y el tema.
 
-Por ejemplo:
-
-- Contenido educativo → "Conoce más".
-- Contenido de consideración → "Descubre cómo funciona".
-- Contenido de conversión → "Regístrate", "Descarga la app", etc.
-
----
-
-# 13. Formatos
-
-Seleccionar el formato de acuerdo con:
-
-- Canal.
-- Objetivo.
-- Tema.
-- Público.
-- Recursos disponibles.
-
-### Facebook
-
-- Post estático.
-- Carrusel.
-- Reel.
-- Video.
-- Formulario nativo, cuando corresponda.
-- Testimonio.
-- Tutorial.
-
-### Instagram
+Ejemplos:
 
 - Post.
 - Carrusel.
@@ -423,14 +192,74 @@ Seleccionar el formato de acuerdo con:
 - Video.
 - Testimonio.
 - Tutorial.
+- Formulario nativo, cuando corresponda.
 
-No elegir formatos únicamente para aumentar la variedad.
+### Tema / idea
 
-El formato debe ayudar a comunicar mejor la idea.
+Debe explicar **qué queremos comunicar** y desde qué enfoque.
+
+Debe ser lo suficientemente claro para que pueda desarrollarse posteriormente como una pieza de contenido.
+
+Ejemplo:
+
+> "Explicar cómo establecer una meta de ahorro puede ayudar a organizar un objetivo específico y mantener un plan de ahorro."
+
+No desarrollar en esta etapa:
+
+- El copy.
+- El hook.
+- El guion.
+- El texto de cada lámina.
+- La secuencia de Stories.
+- El CTA final.
+- Los detalles visuales.
 
 ---
 
-# 14. Fechas y frecuencia
+## 7. Nivel de detalle de "Tema / idea"
+
+La columna **"Tema / idea"** debe funcionar como un brief estratégico breve.
+
+Debe ser suficientemente clara para que la persona o herramienta encargada del desarrollo del contenido pueda convertirla en una pieza sin tener que reinterpretar el objetivo.
+
+Debe indicar:
+
+- Qué se quiere comunicar.
+- Desde qué enfoque.
+- Qué aspecto del producto debe ponerse en contexto.
+- Qué debe comprender el usuario.
+
+### Ejemplo
+
+En lugar de:
+
+> "Beneficios de ProAhorro."
+
+Utilizar:
+
+> "Explicar cómo ProAhorro puede ayudar a organizar un objetivo de ahorro mediante una planificación anticipada."
+
+Otro ejemplo:
+
+> "Presentar el funcionamiento general de ProAhorro para que el usuario entienda qué debe hacer para comenzar."
+
+La idea debe ser concreta, pero no debe convertirse en el desarrollo completo de la pieza.
+
+No es necesario especificar:
+
+- Número de láminas.
+- Texto exacto.
+- Hook.
+- Copy.
+- CTA final.
+- Colores.
+- Tipografías.
+- Composición visual.
+- Escenas detalladas.
+
+---
+
+## 8. Fechas
 
 Distribuir las publicaciones durante el mes solicitado.
 
@@ -449,26 +278,30 @@ Mantener el calendario ordenado cronológicamente.
 
 No inventar fechas importantes.
 
-Si el proyecto contiene fechas específicas, estas deben tener prioridad.
+Si el proyecto contiene fechas específicas, estas tienen prioridad.
 
 ---
 
-# 15. Estructura obligatoria del calendario
+## 9. Estructura del calendario
 
-El calendario debe utilizar **exactamente** esta estructura:
+El calendario debe utilizar exactamente esta estructura:
 
-| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Copy | Link para la pieza gráfica | Estado |
-|---|---|---|---|---|---|---|---|---|
+| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Link para la pieza gráfica | Estado |
+|---|---|---|---|---|---|---|---|
 
 No cambiar los nombres de las columnas.
 
+No agregar columnas adicionales salvo que el usuario lo solicite explícitamente.
+
 No eliminar columnas aunque algún campo todavía esté pendiente.
 
-El público objetivo y la segmentación **no deben aparecer como columnas del calendario**, ya que esta información se encuentra definida en el contexto del proyecto y se utiliza para construir el contenido.
+El público objetivo y la segmentación no deben aparecer como columnas del calendario, ya que esta información se obtiene del contexto del proyecto.
+
+El copy tampoco debe aparecer como columna del calendario.
 
 ---
 
-# 16. Definición de columnas
+## 10. Definición de columnas
 
 ### Fecha
 
@@ -478,18 +311,19 @@ Utilizar:
 
 `DD/MM/YYYY`
 
+Debe corresponder al mes solicitado.
+
 ### Canal
 
-Utilizar:
+Por defecto:
 
-- Facebook
-- Instagram
+`Facebook`
 
-Facebook es el canal principal por defecto.
+No utilizar otros canales salvo que el usuario los solicite explícitamente.
 
 ### Pilar
 
-Pilar estratégico al que pertenece la publicación.
+Pilar estratégico al que pertenece el contenido.
 
 Debe corresponder a los pilares definidos para el calendario.
 
@@ -497,24 +331,11 @@ Debe corresponder a los pilares definidos para el calendario.
 
 Objetivo específico de la publicación.
 
-Ejemplos:
-
-- Educar.
-- Generar awareness.
-- Explicar el producto.
-- Mostrar un beneficio.
-- Resolver una objeción.
-- Generar interés.
-- Generar registros.
-- Generar descargas.
-- Generar conversión.
-- Recordar una fecha o acción.
-
-El objetivo debe describir **para qué existe esa publicación**.
+Debe explicar para qué se realiza el contenido.
 
 ### Formato
 
-Formato de la pieza.
+Formato previsto para desarrollar la publicación.
 
 Ejemplos:
 
@@ -528,32 +349,22 @@ Ejemplos:
 
 ### Tema / idea
 
-Descripción concreta de lo que comunicará y/o mostrará la pieza.
+Tema y enfoque que debe comunicarse.
 
-Debe funcionar como una guía inicial para diseño y producción.
+Debe servir como punto de partida para desarrollar la publicación.
 
-Debe incluir, cuando sea relevante:
+Debe indicar:
 
-- Mensaje o tema central.
+- Tema.
 - Enfoque.
-- Qué debería mostrar la pieza.
-- Información que debe incluir.
-- Estructura sugerida.
-- Relación con el producto.
+- Aspecto del producto que debe comunicarse.
+- Qué debe comprender el usuario.
 
-Debe evitar descripciones excesivamente generales.
-
-### Copy
-
-Texto propuesto para acompañar la publicación.
-
-Debe estar adaptado al canal, público y tono del proyecto.
-
-Debe ser coherente con la pieza y con el objetivo definido.
+No debe contener el copy final ni el desarrollo completo de la pieza.
 
 ### Link para la pieza gráfica
 
-Enlace donde se encuentra la pieza gráfica.
+Utilizar el enlace real de la pieza si existe.
 
 Si todavía no existe:
 
@@ -570,7 +381,7 @@ Utilizar únicamente:
 - `Programado`
 - `Publicado`
 
-Una pieza nueva debe comenzar como:
+Una publicación nueva debe comenzar como:
 
 `En proceso`
 
@@ -578,85 +389,63 @@ salvo que el usuario indique otro estado.
 
 ---
 
-# 17. Reglas del calendario
+## 11. Reglas importantes
 
-1. Cada fila representa una publicación.
-2. Cada publicación debe tener una fecha.
-3. Cada publicación debe tener un canal.
-4. Cada publicación debe tener un pilar.
-5. Cada publicación debe tener un objetivo.
-6. Cada publicación debe tener un formato.
-7. Cada publicación debe tener un tema / idea concreto.
-8. Cada publicación debe tener un copy.
-9. El link de la pieza gráfica debe ser `Pendiente` si todavía no existe.
-10. El estado inicial debe ser `En proceso`, salvo indicación contraria.
-11. No inventar URLs.
-12. No inventar información del producto.
-13. No mezclar información de otros proyectos.
-14. Mantener las publicaciones ordenadas por fecha.
-15. La frecuencia base es 1 contenido por semana.
-16. No aumentar la cantidad de contenidos sin una razón relacionada con el proyecto.
-17. Si Facebook e Instagram requieren piezas o adaptaciones diferentes, crear filas separadas.
-18. Si una misma pieza puede utilizarse en ambos canales sin cambios relevantes, puede indicarse ambos canales en la misma fila.
-19. No incluir el público como columna.
-20. No crear una columna separada para "Mensaje principal".
-21. La información central de comunicación debe quedar integrada en "Tema / idea".
-22. Cada contenido debe tener una función estratégica.
-23. Evitar calendarios compuestos únicamente por contenido promocional.
-24. Priorizar calidad y relevancia sobre cantidad.
+- Cada fila representa una publicación.
+- Mantener las publicaciones ordenadas por fecha.
+- Mantener la frecuencia base de 1 contenido por semana.
+- El canal por defecto es Facebook.
+- No incorporar otros canales salvo solicitud explícita del usuario.
+- No incluir el público como columna.
+- No incluir el copy como columna.
+- No agregar columnas adicionales salvo solicitud explícita del usuario.
+- No mezclar información entre proyectos.
+- No inventar información.
+- Utilizar `[VALIDAR]` cuando falte información necesaria.
+- No inventar URLs.
+- Evitar que todo el calendario sea promocional.
+- No crear contenido adicional sin una razón estratégica.
+- Priorizar calidad y relevancia sobre cantidad.
+- Cada publicación debe tener una función estratégica.
+- El tema / idea debe ser claro y accionable.
+- Las fechas deben corresponder al mes solicitado.
 
 ---
 
-# 18. Revisión antes de entregar
+## 12. Revisión antes de entregar
 
-Antes de presentar el calendario, verificar:
+Antes de presentar el calendario, comprobar:
 
-### Contexto
+### Proyecto
 
-- [ ] La información coincide con el proyecto.
-- [ ] No se mezclaron datos de otros proyectos.
-- [ ] Se respetó el público.
-- [ ] Se respetó el tono.
-- [ ] Se respetó la moneda.
-- [ ] Se respetaron las condiciones del producto.
-- [ ] Se respetaron las fechas y lineamientos específicos.
+- [ ] La información corresponde al proyecto correcto.
+- [ ] No se utilizaron datos de otros proyectos.
+- [ ] Se respetan público, tono, moneda y condiciones.
+- [ ] No se inventaron beneficios, tasas, promociones o funcionalidades.
 
 ### Estrategia
 
-- [ ] Cada publicación tiene un objetivo.
+- [ ] Cada contenido tiene un objetivo.
 - [ ] Los pilares son coherentes.
 - [ ] Existe variedad de contenidos.
+- [ ] La frecuencia es razonable.
 - [ ] Existe una secuencia lógica durante el mes.
 - [ ] No todo el contenido es promocional.
-- [ ] Los CTA son coherentes.
-- [ ] La frecuencia no es excesiva.
 - [ ] La cantidad de publicaciones está justificada.
-- [ ] Cada publicación aporta una función distinta.
 
-### Producción
+### Calendario
 
-- [ ] Las ideas son concretas.
-- [ ] Las ideas pueden utilizarse como briefing inicial para diseño.
+- [ ] Las fechas corresponden al mes solicitado.
+- [ ] Las publicaciones están ordenadas cronológicamente.
+- [ ] El canal es válido.
 - [ ] Los formatos son adecuados.
-- [ ] Los copies son utilizables.
-- [ ] Las fechas son correctas.
+- [ ] Cada tema / idea es claro.
+- [ ] Los links inexistentes aparecen como `Pendiente`.
 - [ ] Los estados son válidos.
-- [ ] Los links existentes son reales.
-- [ ] Los links faltantes están como `Pendiente`.
-
-### Información
-
-- [ ] No se inventaron datos.
-- [ ] No se inventaron tasas.
-- [ ] No se inventaron promociones.
-- [ ] No se inventaron testimonios.
-- [ ] No se inventaron funcionalidades.
-- [ ] No se inventaron condiciones.
-- [ ] Los datos faltantes están marcados como `[VALIDAR]`.
 
 ---
 
-# 19. Formato de respuesta
+## 13. Formato de respuesta
 
 Cuando el usuario solicite un calendario, presentar primero una síntesis:
 
@@ -664,7 +453,7 @@ Cuando el usuario solicite un calendario, presentar primero una síntesis:
 **Producto:** [producto]  
 **Mes:** [mes y año]  
 **Objetivo:** [objetivo]  
-**Canales:** Facebook / Instagram  
+**Canal:** Facebook  
 **Público:** [público]  
 **Pilares:** [pilares]
 
@@ -672,8 +461,8 @@ Después presentar directamente el calendario mensual.
 
 Utilizar siempre:
 
-| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Copy | Link para la pieza gráfica | Estado |
-|---|---|---|---|---|---|---|---|---|
+| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Link para la pieza gráfica | Estado |
+|---|---|---|---|---|---|---|---|
 
 Si existen datos que necesitan confirmación, incluir al final:
 
@@ -685,22 +474,16 @@ No agregar recomendaciones adicionales si el usuario únicamente solicita el cal
 
 ---
 
-# 20. Principio central
+# Principio central
 
-El **contexto del proyecto contiene el qué**.
+El **contexto del proyecto** contiene la información específica del negocio.
 
-Este Skill define **cómo convertir ese contexto en contenido B2C**.
+El **Planificador de Contenidos B2C** transforma esa información en una planificación mensual que define:
 
-Su función es transformar la información específica de cada proyecto de Sommos en un calendario mensual práctico, estratégico y listo para producción.
-
-La lógica de trabajo es:
-
-**Contexto del proyecto → Objetivo → Pilares → Contenidos → Tema / idea → Copy → CTA → Calendario → Producción**
+**qué comunicar + cuándo + dónde + para qué + en qué formato.**
 
 La unidad de planificación es **un mes**.
 
 La frecuencia base es **1 contenido B2C por semana**.
 
-El contenido debe priorizar **calidad, relevancia y coherencia estratégica sobre cantidad**.
-
-Cada proyecto de Sommos debe tratarse de forma independiente y el Skill debe trabajar únicamente con la información disponible y validada para ese proyecto.
+Cada proyecto de Sommos debe tratarse de forma independiente y utilizar únicamente información disponible y validada para ese proyecto.
