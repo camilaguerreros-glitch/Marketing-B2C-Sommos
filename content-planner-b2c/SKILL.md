@@ -1,489 +1,199 @@
+---
+name: planificador-contenidos-b2c
+description: Convierte la información de un proyecto de Sommos en un calendario mensual de contenidos B2C para Facebook (fechas, pilares, objetivos, formatos y tema/idea de cada publicación). Usar siempre que el usuario pida un plan, calendario, parrilla o cronograma de contenidos para un producto o proyecto de Sommos (por ejemplo ProAhorro, MetaAhorro o SommosAgro) y un mes concreto, aunque no use la palabra "calendario"; por ejemplo "planifica los contenidos de octubre", "qué publicamos en noviembre" o "arma el plan del mes". No usar para escribir el copy, el guion o el diseño de una pieza, ni para contenido B2B o comercial.
+---
+
 # Planificador de Contenidos B2C — Sommos
 
-## 1. Propósito
+Este skill transforma la información de un proyecto de Sommos en un **calendario mensual de contenidos B2C**. Para cada publicación define: cuándo sale, en qué canal, con qué objetivo, dentro de qué pilar, en qué formato y qué idea debe desarrollarse.
 
-Este Skill transforma la información de un proyecto de Sommos en un **calendario mensual de contenidos B2C**.
-
-Su función es definir:
-
-- Qué contenido publicar.
-- Cuándo publicarlo.
-- En qué canal.
-- Con qué objetivo.
-- Dentro de qué pilar.
-- En qué formato.
-- Qué tema o idea debe desarrollarse.
+El skill **planifica, no produce**. El copy, el hook, el guion, el texto de cada lámina, el CTA y los detalles visuales se desarrollan después, en otra etapa.
 
 ---
 
-## 2. Fuente de información
+## 1. Antes de empezar
 
-El **contexto del proyecto** es la fuente principal de verdad.
+### Contexto del proyecto
 
-Puede contener información como:
+El **contexto del proyecto** es la fuente principal de verdad. Está en la carpeta `projects/<nombre-del-proyecto>/` en la raíz del repositorio (por ejemplo, `projects/proahorro/`). Suele incluir producto, aliado o entidad, país, moneda, público, objetivos, beneficios, mecánica, tono, fechas y campañas activas.
 
-- Producto.
-- Aliado o entidad.
-- País.
-- Moneda.
-- Público.
-- Segmentación.
-- Objetivos.
-- Necesidades.
-- Beneficios.
-- Características.
-- Mecánica.
-- Tono.
-- Fechas.
-- Lineamientos.
-- Canales de conversión.
-- Campañas activas.
+1. Identifica el proyecto que menciona el usuario y lee **todos los archivos** de su carpeta.
+2. Si el nombre del usuario no coincide exactamente con ninguna carpeta (por ejemplo, "Pro Ahorro" vs. `proahorro`), usa la más parecida solo si es evidente; si hay duda, pregunta.
+3. Si la carpeta no existe o está vacía, díselo al usuario y pídele el contexto antes de planificar (puede adjuntarlo o pegarlo en el chat). No lo reemplaces por suposiciones ni uses el de otro proyecto.
+4. Si no encuentras la información que necesitas, revisa `projects/README.md`, que explica cómo está organizada la carpeta.
 
-Cada proyecto debe tratarse de forma independiente.
+### Solicitud
 
-No utilizar automáticamente información de otros proyectos de Sommos.
+Necesitas dos datos: **proyecto/producto** y **mes**.
 
-No inventar:
+- Si falta el mes, o el producto es ambiguo, pregunta antes de asumir.
+- Si piden varios meses, genera un calendario por mes.
+- Si no se indica el año, usa el actual, salvo que el contexto diga otro.
 
-- Beneficios.
-- Tasas.
-- Montos.
-- Promociones.
-- Condiciones.
-- Funcionalidades.
-- Fechas.
-- Testimonios.
-- Resultados.
-- Características del producto.
+### Archivos de referencia
 
-Si falta información necesaria para planificar un contenido, utilizar:
+Lee ambos antes de armar el calendario:
 
-`[VALIDAR]`
+- `references/content-pillars-b2c.md`: pilares disponibles y cuándo usar cada uno.
+- `references/content-formats-b2c.md`: formatos disponibles y cuándo conviene cada uno.
 
-Si el contexto del proyecto establece una frecuencia, canal, tono o cantidad de contenidos específica, esa instrucción tiene prioridad sobre las reglas generales de este Skill.
+Usa **únicamente** los pilares y formatos que estén definidos ahí. No los amplíes ni los renombres desde este skill; así, si cambias esos archivos, el skill sigue siendo coherente.
 
 ---
 
-## 3. Solicitud y periodo
+## 2. Principios
 
-El usuario puede solicitar un calendario indicando el proyecto o producto y el mes que desea planificar.
+**Cada proyecto es independiente.** No uses información de otros proyectos de Sommos, aunque parezca similar.
 
-Ejemplo:
+**No inventes datos.** Sommos trabaja con productos financieros, y un beneficio, tasa, monto, promoción, condición, fecha, testimonio o resultado inventado puede tener implicaciones legales y de confianza. Si falta un dato necesario para planificar una publicación, escribe `[VALIDAR]` en la celda correspondiente y agrégalo a "Pendientes de validación".
 
-> "Haz un plan de contenidos para ProAhorro de octubre."
+**El contexto manda.** Si el contexto del proyecto fija frecuencia, canal, tono o cantidad de contenidos, eso prevalece sobre las reglas generales de este skill.
 
-El Skill debe interpretar el proyecto/producto y el periodo solicitado utilizando el contexto disponible del proyecto.
-
-El calendario debe cubrir **únicamente el mes solicitado**.
-
-Si el año no está indicado, utilizar el año actual, salvo que el contexto del proyecto indique otro año.
-
-Las publicaciones deben mantenerse dentro del primer y último día del mes solicitado y ordenarse cronológicamente.
+**Calidad sobre cantidad.** No agregues publicaciones solo para llenar el calendario. Cada publicación necesita una razón estratégica.
 
 ---
 
-## 4. Frecuencia y canales
+## 3. Frecuencia y canal
 
-### Frecuencia
+**Frecuencia base: 1 contenido B2C por semana**, lo que da entre 4 y 5 publicaciones al mes.
 
-La frecuencia base es:
+- Cuenta semanas de lunes a domingo. Se planifica una publicación por cada semana que tenga al menos 4 días dentro del mes solicitado.
+- Puede haber más publicaciones si el contexto lo justifica: lanzamientos, campañas de duración limitada, promociones, eventos o fechas comerciales relevantes. Indica brevemente la razón.
 
-**1 contenido B2C por semana.**
-
-Esto equivale aproximadamente a 4–5 publicaciones por mes.
-
-La cantidad puede aumentar cuando el contexto del proyecto lo justifique, por ejemplo:
-
-- Lanzamientos.
-- Campañas de duración limitada.
-- Promociones.
-- Eventos.
-- Fechas comerciales relevantes.
-- Activaciones específicas.
-
-No agregar publicaciones únicamente para llenar el calendario.
-
-Priorizar:
-
-**calidad + relevancia + coherencia estratégica**
-
-sobre cantidad.
-
-### Canal
-
-El canal por defecto es:
-
-- **Facebook**
-
-No incorporar otros canales salvo que el usuario lo solicite explícitamente.
+**Canal por defecto: Facebook.** No incluyas otros canales salvo que el usuario lo pida explícitamente.
 
 ---
 
-## 5. Estrategia de contenidos
+## 4. Estrategia del mes
 
-Antes de crear el calendario:
+Antes de armar la tabla:
 
-1. Revisar el objetivo del proyecto.
-2. Revisar el público y sus necesidades.
-3. Identificar los principales problemas, intereses o necesidades que el producto puede abordar.
-4. Identificar los beneficios y características que pueden comunicarse.
-5. Definir entre **3 y 5 pilares de contenido**.
-6. Distribuir los contenidos durante el mes.
-7. Crear una secuencia lógica de comunicación.
-
-Los pilares pueden incluir, según corresponda:
-
-- Educación.
-- Problema / necesidad.
-- Producto.
-- Beneficios.
-- Funcionamiento.
-- Confianza.
-- Testimonios.
-- Preguntas frecuentes.
-- Conversión.
-- Promoción.
-- Recordatorio.
-
-No utilizar todos automáticamente.
-
-El calendario debe evitar ser exclusivamente promocional.
-
-Cuando sea relevante, combinar contenidos de:
-
-**educación → necesidad → solución → producto → consideración → conversión**
-
-La secuencia debe adaptarse al proyecto y no aplicarse de forma rígida.
+1. Revisa el objetivo del proyecto, el público y sus necesidades.
+2. Identifica los problemas o necesidades que el producto puede abordar, y los beneficios y características que pueden comunicarse.
+3. Selecciona los pilares más relevantes (no hace falta usarlos todos).
+4. Distribuye los contenidos con una secuencia lógica. Cuando aplique, combina **educación → necesidad → solución → producto → consideración → conversión**, sin aplicarla de forma rígida.
+5. Evita que el calendario sea exclusivamente promocional.
 
 ---
 
-## 6. Definición de cada contenido
-
-Cada publicación debe definir:
+## 5. Cómo definir cada publicación
 
 ### Objetivo
-
-Indica para qué existe la publicación.
-
-Ejemplos:
-
-- Educar.
-- Generar awareness.
-- Explicar el producto.
-- Mostrar un beneficio.
-- Explicar el funcionamiento.
-- Resolver una objeción.
-- Generar interés.
-- Generar registros.
-- Generar descargas.
-- Generar conversión.
-- Recordar una acción.
+Para qué existe la publicación. Ejemplos: educar, generar awareness, explicar el producto, mostrar un beneficio, explicar el funcionamiento, resolver una objeción, generar interés, registros o descargas, recordar una acción.
 
 ### Formato
-
-Seleccionar el formato que mejor ayude a comunicar el objetivo y el tema.
-
-Ejemplos:
-
-- Post.
-- Carrusel.
-- Reel.
-- Story.
-- Video.
-- Testimonio.
-- Tutorial.
-- Formulario nativo, cuando corresponda.
+Elige del archivo de formatos el que mejor comunique el objetivo y el tema.
 
 ### Tema / idea
+Funciona como un **brief estratégico breve**: quien desarrolle la pieza debe poder hacerlo sin reinterpretar el objetivo. Debe indicar:
 
-Debe explicar **qué queremos comunicar** y desde qué enfoque.
-
-Debe ser lo suficientemente claro para que pueda desarrollarse posteriormente como una pieza de contenido.
-
-Ejemplo:
-
-> "Explicar cómo establecer una meta de ahorro puede ayudar a organizar un objetivo específico y mantener un plan de ahorro."
-
-No desarrollar en esta etapa:
-
-- El copy.
-- El hook.
-- El guion.
-- El texto de cada lámina.
-- La secuencia de Stories.
-- El CTA final.
-- Los detalles visuales.
-
----
-
-## 7. Nivel de detalle de "Tema / idea"
-
-La columna **"Tema / idea"** debe funcionar como un brief estratégico breve.
-
-Debe ser suficientemente clara para que la persona o herramienta encargada del desarrollo del contenido pueda convertirla en una pieza sin tener que reinterpretar el objetivo.
-
-Debe indicar:
-
-- Qué se quiere comunicar.
-- Desde qué enfoque.
-- Qué aspecto del producto debe ponerse en contexto.
+- Qué se quiere comunicar y desde qué enfoque.
+- Qué aspecto del producto se pone en contexto.
 - Qué debe comprender el usuario.
 
-### Ejemplo
+Debe ser concreta, sin convertirse en el desarrollo de la pieza (sin copy, hook, CTA, número de láminas, escenas ni indicaciones visuales).
 
-En lugar de:
-
-> "Beneficios de ProAhorro."
-
-Utilizar:
-
-> "Explicar cómo ProAhorro puede ayudar a organizar un objetivo de ahorro mediante una planificación anticipada."
-
-Otro ejemplo:
-
-> "Presentar el funcionamiento general de ProAhorro para que el usuario entienda qué debe hacer para comenzar."
-
-La idea debe ser concreta, pero no debe convertirse en el desarrollo completo de la pieza.
-
-No es necesario especificar:
-
-- Número de láminas.
-- Texto exacto.
-- Hook.
-- Copy.
-- CTA final.
-- Colores.
-- Tipografías.
-- Composición visual.
-- Escenas detalladas.
+| ❌ Demasiado vago | ✅ Brief útil |
+|---|---|
+| "Beneficios de ProAhorro." | "Explicar cómo ProAhorro puede ayudar a organizar un objetivo de ahorro mediante una planificación anticipada." |
+| "Cómo funciona el producto." | "Presentar el funcionamiento general de ProAhorro para que el usuario entienda qué debe hacer para comenzar." |
 
 ---
 
-## 8. Fechas
+## 6. Fechas
 
-Distribuir las publicaciones durante el mes solicitado.
-
-Considerar:
-
-- Inicio de campaña.
-- Cierre de campaña.
-- Fechas relevantes.
-- Frecuencia de 1 contenido por semana.
-- Eventos.
-- Temporadas.
-- Secuencia estratégica.
-- Acciones necesarias antes o después de una fecha importante.
-
-Mantener el calendario ordenado cronológicamente.
-
-No inventar fechas importantes.
-
-Si el proyecto contiene fechas específicas, estas tienen prioridad.
+- Todas las fechas deben caer dentro del mes solicitado, en orden cronológico.
+- Las fechas específicas del contexto (inicio o cierre de campaña, eventos) tienen prioridad. Planifica también las acciones necesarias antes o después de una fecha importante.
+- **Varía los días de la semana** a lo largo del mes en lugar de publicar siempre el mismo día, manteniendo una distribución equilibrada.
+- **No inventes fechas importantes.** Usa las del contexto. Si consideras relevante una fecha comercial conocida del país del proyecto (por ejemplo, un Día de la Madre), inclúyela marcada con `[VALIDAR]`.
 
 ---
 
-## 9. Estructura del calendario
+## 7. Estructura de la tabla
 
-El calendario debe utilizar exactamente esta estructura:
+Usa **exactamente** estas columnas, sin cambiar nombres, sin agregar ni quitar ninguna (aunque algún campo esté pendiente):
 
 | Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Link para la pieza gráfica | Estado |
 |---|---|---|---|---|---|---|---|
 
-No cambiar los nombres de las columnas.
+Cada fila es una publicación. El público, la segmentación y el copy **no** van como columnas: el público sale del contexto y el copy se desarrolla después.
 
-No agregar columnas adicionales salvo que el usuario lo solicite explícitamente.
-
-No eliminar columnas aunque algún campo todavía esté pendiente.
-
-El público objetivo y la segmentación no deben aparecer como columnas del calendario, ya que esta información se obtiene del contexto del proyecto.
-
-El copy tampoco debe aparecer como columna del calendario.
-
----
-
-## 10. Definición de columnas
-
-### Fecha
-
-Fecha prevista de publicación.
-
-Utilizar:
-
-`DD/MM/YYYY`
-
-Debe corresponder al mes solicitado.
-
-### Canal
-
-Por defecto:
-
-`Facebook`
-
-No utilizar otros canales salvo que el usuario los solicite explícitamente.
-
-### Pilar
-
-Pilar estratégico al que pertenece el contenido.
-
-Debe corresponder a los pilares definidos para el calendario.
-
-### Objetivo
-
-Objetivo específico de la publicación.
-
-Debe explicar para qué se realiza el contenido.
-
-### Formato
-
-Formato previsto para desarrollar la publicación.
-
-Ejemplos:
-
-- Reel.
-- Carrusel.
-- Post.
-- Story.
-- Video.
-- Testimonio.
-- Tutorial.
-
-### Tema / idea
-
-Tema y enfoque que debe comunicarse.
-
-Debe servir como punto de partida para desarrollar la publicación.
-
-Debe indicar:
-
-- Tema.
-- Enfoque.
-- Aspecto del producto que debe comunicarse.
-- Qué debe comprender el usuario.
-
-No debe contener el copy final ni el desarrollo completo de la pieza.
-
-### Link para la pieza gráfica
-
-Utilizar el enlace real de la pieza si existe.
-
-Si todavía no existe:
-
-`Pendiente`
-
-Nunca inventar una URL.
-
-### Estado
-
-Utilizar únicamente:
-
-- `En proceso`
-- `En revisión`
-- `Programado`
-- `Publicado`
-
-Una publicación nueva debe comenzar como:
-
-`En proceso`
-
-salvo que el usuario indique otro estado.
+| Columna | Qué poner |
+|---|---|
+| **Fecha** | `DD/MM/YYYY`, dentro del mes solicitado. |
+| **Canal** | `Facebook` (salvo pedido explícito). |
+| **Pilar** | Uno de los definidos en `content-pillars-b2c.md`. |
+| **Objetivo** | Para qué se hace la publicación. |
+| **Formato** | Uno de los definidos en `content-formats-b2c.md`. |
+| **Tema / idea** | Brief estratégico (sección 5). |
+| **Link para la pieza gráfica** | El enlace real si existe; si no, `Pendiente`. Nunca inventes una URL. |
+| **Estado** | Solo `En proceso`, `En revisión`, `Programado` o `Publicado`. Toda publicación nueva empieza en `En proceso`, salvo que el usuario indique otro estado. |
 
 ---
 
-## 11. Reglas importantes
+## 8. Formato de la respuesta
 
-- Cada fila representa una publicación.
-- Mantener las publicaciones ordenadas por fecha.
-- Mantener la frecuencia base de 1 contenido por semana.
-- El canal por defecto es Facebook.
-- No incorporar otros canales salvo solicitud explícita del usuario.
-- No incluir el público como columna.
-- No incluir el copy como columna.
-- No agregar columnas adicionales salvo solicitud explícita del usuario.
-- No mezclar información entre proyectos.
-- No inventar información.
-- Utilizar `[VALIDAR]` cuando falte información necesaria.
-- No inventar URLs.
-- Evitar que todo el calendario sea promocional.
-- No crear contenido adicional sin una razón estratégica.
-- Priorizar calidad y relevancia sobre cantidad.
-- Cada publicación debe tener una función estratégica.
-- El tema / idea debe ser claro y accionable.
-- Las fechas deben corresponder al mes solicitado.
+Presenta primero una síntesis y después el calendario:
+
+```
+**Proyecto:** [nombre]
+**Producto:** [producto]
+**Mes:** [mes y año]
+**Objetivo:** [objetivo]
+**Canal:** Facebook
+**Público:** [público]
+**Pilares:** [pilares seleccionados]
+```
+
+Luego, la tabla del calendario (sección 7).
+
+Si hay datos por confirmar, cierra con:
+
+```
+### Pendientes de validación
+- [Dato pendiente]
+```
+
+No agregues recomendaciones ni comentarios extra si el usuario solo pidió el calendario.
 
 ---
 
-## 12. Revisión antes de entregar
+## 9. Ejemplo (ilustrativo)
 
-Antes de presentar el calendario, comprobar:
+Los datos son de muestra y no corresponden a ningún proyecto real. Sirve para fijar el nivel de detalle y el tipo de distribución esperados.
 
-### Proyecto
+Solicitud: *"Haz un plan de contenidos para ProAhorro de octubre."*
 
-- [ ] La información corresponde al proyecto correcto.
-- [ ] No se utilizaron datos de otros proyectos.
+| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Link para la pieza gráfica | Estado |
+|---|---|---|---|---|---|---|---|
+| 02/10/2026 | Facebook | Educación | Educar | Post | Explicar por qué definir una meta concreta de ahorro facilita mantener el hábito, poniendo el foco en la importancia de tener un objetivo claro. | Pendiente | En proceso |
+| 06/10/2026 | Facebook | Necesidad y objetivos | Generar interés | Carrusel | Mostrar situaciones cotidianas en las que ahorrar con anticipación evita apuros, para que el usuario se identifique con la necesidad. | Pendiente | En proceso |
+| 14/10/2026 | Facebook | Producto y funcionamiento | Explicar el funcionamiento | Reel | Presentar el funcionamiento general de ProAhorro para que el usuario entienda qué debe hacer para comenzar. | Pendiente | En proceso |
+| 22/10/2026 | Facebook | Confianza y experiencia | Resolver una objeción | Post | Aclarar una duda frecuente sobre el uso del producto `[VALIDAR: dudas reales del público]`. | Pendiente | En proceso |
+| 26/10/2026 | Facebook | Producto y funcionamiento | Generar registros | Carrusel | Recordar el beneficio principal de ProAhorro y cómo empezar, como cierre del mes. | Pendiente | En proceso |
+
+### Pendientes de validación
+- Dudas o preguntas frecuentes reales del público para la publicación del 22/10.
+
+---
+
+## 10. Revisión antes de entregar
+
+**Proyecto**
+- [ ] La información corresponde al proyecto correcto y no se usaron datos de otros.
 - [ ] Se respetan público, tono, moneda y condiciones.
-- [ ] No se inventaron beneficios, tasas, promociones o funcionalidades.
+- [ ] No hay beneficios, tasas, promociones ni funcionalidades inventadas.
 
-### Estrategia
-
-- [ ] Cada contenido tiene un objetivo.
-- [ ] Los pilares son coherentes.
-- [ ] Existe variedad de contenidos.
-- [ ] La frecuencia es razonable.
-- [ ] Existe una secuencia lógica durante el mes.
+**Estrategia**
+- [ ] Cada publicación tiene un objetivo y una función estratégica.
+- [ ] Hay variedad de pilares y formatos, y una secuencia lógica durante el mes.
 - [ ] No todo el contenido es promocional.
 - [ ] La cantidad de publicaciones está justificada.
 
-### Calendario
-
-- [ ] Las fechas corresponden al mes solicitado.
-- [ ] Las publicaciones están ordenadas cronológicamente.
-- [ ] El canal es válido.
-- [ ] Los formatos son adecuados.
-- [ ] Cada tema / idea es claro.
-- [ ] Los links inexistentes aparecen como `Pendiente`.
-- [ ] Los estados son válidos.
-
----
-
-## 13. Formato de respuesta
-
-Cuando el usuario solicite un calendario, presentar primero una síntesis:
-
-**Proyecto:** [nombre]  
-**Producto:** [producto]  
-**Mes:** [mes y año]  
-**Objetivo:** [objetivo]  
-**Canal:** Facebook  
-**Público:** [público]  
-**Pilares:** [pilares]
-
-Después presentar directamente el calendario mensual.
-
-Utilizar siempre:
-
-| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea | Link para la pieza gráfica | Estado |
-|---|---|---|---|---|---|---|---|
-
-Si existen datos que necesitan confirmación, incluir al final:
-
-### Pendientes de validación
-
-- [Dato pendiente]
-
-No agregar recomendaciones adicionales si el usuario únicamente solicita el calendario.
-
----
-
-# Principio central
-
-El **contexto del proyecto** contiene la información específica del negocio.
-
-El **Planificador de Contenidos B2C** transforma esa información en una planificación mensual que define:
-
-**qué comunicar + cuándo + dónde + para qué + en qué formato.**
-
-La unidad de planificación es **un mes**.
-
-La frecuencia base es **1 contenido B2C por semana**.
-
-Cada proyecto de Sommos debe tratarse de forma independiente y utilizar únicamente información disponible y validada para ese proyecto.
+**Calendario**
+- [ ] Fechas dentro del mes solicitado, en orden cronológico y con días de la semana variados.
+- [ ] Pilares y formatos pertenecen a los archivos de referencia.
+- [ ] Columnas exactas, canal válido, estados válidos.
+- [ ] Links inexistentes como `Pendiente`.
+- [ ] Cada tema / idea es claro y no incluye copy ni desarrollo de la pieza.
+- [ ] Los `[VALIDAR]` de la tabla aparecen también en "Pendientes de validación".
