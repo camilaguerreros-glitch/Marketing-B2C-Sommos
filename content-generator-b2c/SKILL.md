@@ -1,489 +1,233 @@
+---
+name: generador-contenidos-b2c
+description: Desarrolla una pieza de contenido B2C de Sommos (post, carrusel o Reel) a partir de una idea, una fila del calendario B2C o una solicitud directa, entregando hook, estructura, texto de la pieza, copy, CTA y dirección visual según los lineamientos creativos del proyecto, listos para pasar a producción. Usar siempre que el usuario pida escribir, desarrollar o crear un copy, caption, hook, guion, carrusel, Reel o post para un proyecto de Sommos (por ejemplo ProAhorro, MetaAhorro o SommosAgro), o cuando pegue una fila del calendario de contenidos y quiera convertirla en pieza, aunque no diga "generador". No usar para planificar el calendario mensual, ni para contenido B2B o comercial.
+---
+
 # Generador de Contenidos B2C — Sommos
 
-## 1. Propósito
+Este skill transforma una **idea de contenido B2C** en una pieza desarrollada y lista para producción, usando el contexto específico del proyecto.
 
-Este Skill transforma una **idea de contenido B2C** en una pieza desarrollada y lista para pasar a producción.
+**Contexto del proyecto + idea → desarrollo del contenido → pieza lista para producción.**
 
-Puede desarrollar:
-
-- Copies.
-- Captions.
-- Hooks.
-- Reels.
-- Carruseles.
-- Posts.
-- Testimonios.
-- Tutoriales.
-- Textos para piezas gráficas.
-- CTA.
-- Guiones y estructuras de contenido.
-
-El contenido debe desarrollarse a partir del **contexto específico del proyecto** y de la idea proporcionada.
+Es la etapa siguiente al planificador de contenidos: el planificador define *qué comunicar, cuándo y en qué formato*; este skill desarrolla *cómo se dice*.
 
 ---
 
-## 2. Fuente de información
+## 1. Antes de empezar
 
-El **contexto del proyecto** es la fuente principal de verdad.
+### Contexto del proyecto
 
-Puede incluir:
+Cada proyecto tiene su carpeta en `projects/<nombre-del-proyecto>/` en la raíz del repositorio (por ejemplo, `projects/proahorro/`), con dos archivos que debes leer **siempre** antes de desarrollar una pieza:
 
-- Producto.
-- Aliado o entidad.
-- País.
-- Moneda.
-- Público.
-- Segmentación.
-- Objetivos.
-- Necesidades.
-- Beneficios.
-- Características.
-- Mecánica.
-- Tono.
-- Fechas.
-- Lineamientos de marca.
-- Canales de conversión.
-- Campañas activas.
+- **`PROJECT.md`: contexto del proyecto.** Es la fuente principal de verdad sobre el negocio: producto, aliado o entidad, país, moneda, público, objetivos, beneficios, características, mecánica, tono, canales de conversión y campañas activas.
+- **`CREATIVE-GUIDELINES.md`: lineamientos creativos.** Definen la identidad gráfica del proyecto: líneas gráficas, paleta de colores, tipografías y demás criterios visuales de la marca (ver "Lineamientos creativos" más abajo).
 
-Cada proyecto debe tratarse de forma independiente.
+1. Identifica el proyecto y lee ambos archivos. Si la carpeta tiene otros, revísalos si son relevantes.
+2. Si el nombre no coincide exactamente con ninguna carpeta, usa la más parecida solo si es evidente; si hay duda, pregunta.
+3. Si la carpeta no existe o `PROJECT.md` falta, díselo al usuario y pide el contexto (puede adjuntarlo o pegarlo) antes de desarrollar la pieza. No lo reemplaces por suposiciones ni uses el de otro proyecto.
+4. Si el contexto fija un tono, lenguaje, formato o lineamiento específico, ese tiene prioridad sobre las reglas generales de este skill.
+5. Si no encuentras algo que necesitas, revisa `projects/README.md`, que explica cómo está organizada la carpeta.
 
-No utilizar automáticamente información de otros proyectos de Sommos.
+### Lineamientos creativos
 
-No inventar:
+Cada cliente tiene una identidad distinta, por eso hay un `CREATIVE-GUIDELINES.md` por proyecto. **Todo lo visual de la pieza debe guiarse por el de ese proyecto**: paleta de colores, tipografías, estilo gráfico, uso del logo, tipo de imágenes y personas, y cualquier criterio que el documento defina.
 
-- Beneficios.
-- Tasas.
-- Montos.
-- Promociones.
-- Condiciones.
-- Funcionalidades.
-- Fechas.
-- Testimonios.
-- Resultados.
-- Características del producto.
+- **Aplica solo lo que el documento dice.** No inventes colores, códigos hex, tipografías ni estilos. Si necesitas un dato visual que el documento no define, escribe `[VALIDAR]`.
+- **No mezcles marcas.** Nunca uses los lineamientos de otro proyecto ni un estilo "genérico" de Sommos como reemplazo.
+- **Si el proyecto no tiene `CREATIVE-GUIDELINES.md`**, dilo al usuario y desarrolla el contenido de texto igualmente, dejando la dirección visual como `[VALIDAR: lineamientos creativos del proyecto]`.
+- **Prioridad:** para lo visual y de producción, mandan los lineamientos del proyecto; donde no digan nada, aplican los lineamientos generales de `resources/Formatos.md` (por ejemplo, personas reales, voz en off y subtítulos en Reels). Si `PROJECT.md` y `CREATIVE-GUIDELINES.md` se contradicen, avísalo y no elijas por tu cuenta.
 
-Si falta información necesaria para desarrollar la pieza, utilizar:
+### Formatos
 
-`[VALIDAR]`
+Antes de desarrollar una pieza, lee `resources/Formatos.md`. Los formatos válidos son **Post, Carrusel y Reel**; sus lineamientos de producción (personas reales, voz en off, subtítulos) están en la sección 5 de ese archivo.
 
-Si el contexto del proyecto establece un tono, lenguaje, formato o lineamiento específico, esa información tiene prioridad.
+### Pilares
+
+Si la pieza viene de una fila del calendario (o el usuario indica un pilar), lee `resources/Pilares.md` para respetar el enfoque y las precauciones del pilar: por ejemplo, en Producto y funcionamiento los beneficios y condiciones salen solo del contexto, y en Confianza y experiencia no se usan testimonios ni cifras que no estén documentados.
+
+### Tipos de contenido
+
+Si el usuario pide un **testimonio** o un **tutorial**, no son formatos sino tipos de contenido: desarrollarlos dentro de un Post, Carrusel o Reel (ver sección 5).
 
 ---
 
-## 3. Entrada
+## 2. Qué recibe el skill
 
-El Skill puede recibir:
+**A. Una idea de contenido.** Ejemplo: *"Quiero un carrusel para explicar cómo ProAhorro ayuda a organizar una meta de ahorro."*
 
-### Opción A — Una idea de contenido
+**B. Una fila del calendario B2C** (Fecha, Canal, Pilar, Objetivo, Formato, Tema / idea). Úsala como base: respeta el objetivo, el formato y el enfoque del tema / idea.
+- Si la fila trae `[VALIDAR]`, mantenlo y repórtalo al final.
+- Si el tema / idea choca con el contexto del proyecto, dilo y propón cómo ajustarlo antes de desarrollar.
+- Si recibes varias filas, desarrolla cada una en orden y mantén coherencia entre ellas; si son muchas, pregunta si quiere todas o algunas.
 
-Ejemplo:
+**C. Una solicitud directa.** Ejemplos: *"Haz un Reel sobre…"*, *"Dame un copy para…"*. Usa el contexto del proyecto y las instrucciones del usuario.
 
-> "Quiero un carrusel para explicar cómo ProAhorro ayuda a organizar una meta de ahorro."
-
-### Opción B — Una fila del calendario B2C
-
-Puede recibir información como:
-
-- Proyecto.
-- Producto.
-- Canal.
-- Pilar.
-- Objetivo.
-- Formato.
-- Tema / idea.
-
-Ejemplo:
-
-| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea |
-|---|---|---|---|---|---|
-| 15/10/2026 | Facebook | Educación | Generar interés | Carrusel | Explicar cómo establecer una meta de ahorro puede ayudar a organizar un objetivo específico. |
-
-Cuando reciba una fila del calendario, utilizar esa información como base para desarrollar la pieza.
-
-### Opción C — Una solicitud específica
-
-El usuario también puede pedir directamente:
-
-> "Haz un Reel sobre..."
-
-> "Dame un copy para..."
-
-> "Haz un carrusel de..."
-
-El Skill debe utilizar la información disponible del proyecto y las instrucciones específicas del usuario.
+Si no se indica el formato, elige el más adecuado según el archivo de formatos y menciónalo en una línea.
 
 ---
 
-## 4. Principios de desarrollo
+## 3. Principios
 
-Cada pieza debe:
+**No inventes datos.** Sommos trabaja con productos financieros: un beneficio, tasa, monto, promoción, condición, fecha, funcionalidad, dato, estadística, testimonio, caso de éxito o resultado inventado puede tener implicaciones legales y de confianza. Si falta información necesaria, escribe `[VALIDAR]` en el punto exacto del texto y agrégalo a "Pendientes de validación".
 
-- Tener un mensaje central claro.
-- Responder al objetivo definido.
-- Ser relevante para el público.
-- Mantener el tono del proyecto.
-- Ser coherente con el producto.
-- Utilizar información validada.
-- Tener una estructura adecuada al formato.
-- Evitar información innecesaria.
-- Incluir CTA cuando corresponda.
+**Prudencia con las promesas.**
+- No transformes una característica en un beneficio que no esté validado.
+- No conviertas una posibilidad en una promesa.
+- No presentes resultados como garantizados si el contexto no los respalda.
+- Si el contexto incluye textos legales, condiciones o avisos obligatorios, inclúyelos donde corresponda.
 
-El contenido debe ser **claro, natural y fácil de entender**.
+**Cada pieza debe** tener un mensaje central claro, responder al objetivo, ser relevante para el público, mantener el tono del proyecto y usar solo información validada.
 
-Evitar lenguaje excesivamente corporativo, técnico o artificial cuando no corresponda al público.
+**Claro, natural y fácil de entender.** Evita el lenguaje corporativo, técnico o artificial cuando no corresponda al público. No asumas conocimientos financieros o del producto que el público probablemente no tiene; si un concepto es complejo, explícalo de forma sencilla. Adapta el lenguaje al país, la moneda y la etapa del usuario.
 
-No agregar información únicamente para hacer el contenido más largo.
+**Sin relleno.** No agregues información solo para alargar la pieza ni elementos que el usuario no pidió.
 
 ---
 
-## 5. Adaptación según formato
+## 4. Copy, CTA y hooks
 
-El formato debe determinar la estructura del contenido.
-
-No utilizar una estructura rígida para todos los formatos.
-
-### Post
-
-Desarrollar:
-
-- Concepto.
-- Texto sugerido para la pieza, cuando corresponda.
-- Copy o caption.
-- CTA.
-
-La cantidad de texto debe adaptarse al objetivo y al diseño.
-
----
-
-### Carrusel
-
-Desarrollar:
-
-- Concepto.
-- Hook o portada.
-- Estructura de las láminas.
-- Texto sugerido para cada lámina.
-- Cierre.
-- Copy o caption.
-- CTA.
-
-La cantidad de láminas debe definirse según la información necesaria.
-
-No establecer una cantidad fija de láminas para todos los carruseles.
-
----
-
-### Reel
-
-Desarrollar:
-
-- Concepto.
-- Hook.
-- Estructura del Reel.
-- Escenas o momentos principales.
-- Texto en pantalla, cuando corresponda.
-- Voz o guion, cuando corresponda.
-- Copy o caption.
-- CTA.
-
-La estructura debe adaptarse al objetivo y a la complejidad del mensaje.
-
----
-
-### Testimonio
-
-Desarrollar:
-
-- Idea central.
-- Estructura del testimonio.
-- Preguntas o mensajes sugeridos cuando sean necesarios.
-- Texto de apoyo.
-- Copy.
-- CTA.
-
-No inventar testimonios ni atribuir declaraciones a personas reales.
-
-Si se necesita información del testimonio:
-
-`[VALIDAR]`
-
----
-
-### Tutorial
-
-Desarrollar:
-
-- Objetivo.
-- Introducción.
-- Pasos.
-- Texto de apoyo.
-- Cierre.
-- Copy.
-- CTA.
-
-Los pasos deben basarse únicamente en funcionalidades o procesos confirmados del producto.
-
----
-
-## 6. Copy y CTA
-
-### Copy
-
-El copy debe:
-
-- Ser coherente con la pieza.
-- Mantener el tono del proyecto.
-- Hablar al público correspondiente.
-- Desarrollar el mensaje central.
-- Ser claro y natural.
-- Incluir CTA cuando corresponda.
-
-No repetir innecesariamente todo lo que aparece en la pieza.
-
-El copy debe complementar el contenido visual.
+### Copy / caption
+- Complementa la pieza visual; no repite todo lo que aparece en ella.
+- Mantiene el tono del proyecto y habla al público correspondiente.
+- Las primeras líneas deben sostener el mensaje central, porque es lo primero que se lee.
+- Emojis, hashtags y estilo siguen los lineamientos del contexto; si no hay, mantén un uso sobrio.
 
 ### CTA
-
-El CTA debe corresponder al objetivo de la publicación y a una acción que realmente pueda realizar el usuario.
-
-Ejemplos:
-
-- Conoce más.
-- Descubre cómo funciona.
-- Regístrate.
-- Descarga la app.
-- Empieza a ahorrar.
-- Configura tu meta.
-- Abre tu cuenta.
-- Completa el formulario.
-- Acércate a una agencia.
-
-No utilizar CTA que impliquen acciones que el producto no permite.
-
----
-
-## 7. Hooks y mensajes principales
-
-Cuando el formato lo requiera, generar un **hook** que capte la atención y esté relacionado directamente con el contenido.
-
-El hook puede utilizar:
-
-- Una pregunta.
-- Un problema.
-- Una situación cotidiana.
-- Un beneficio.
-- Una afirmación.
-- Una idea que genere curiosidad.
-
-El hook debe ser relevante para el público y no utilizar exageraciones que no puedan sustentarse.
-
-### Variaciones
-
-Cuando sea útil, generar hasta **3 opciones de hook o CTA** para que el usuario pueda elegir.
-
-No generar múltiples opciones innecesariamente si una propuesta clara es suficiente.
-
----
-
-## 8. Texto para piezas gráficas
-
-Cuando el contenido requiera texto dentro de una pieza gráfica, diferenciar claramente entre:
-
-**Texto de la pieza**
-
-y
-
-**Copy / caption**
-
-El texto de la pieza debe ser:
-
-- Breve.
-- Fácil de leer.
-- Jerarquizado.
-- Coherente con el objetivo.
-- Compatible con el formato.
-
-No llenar las piezas con demasiado texto.
-
-Cuando sea un carrusel, organizar el contenido por lámina.
-
-Cuando sea un Reel, organizarlo por escena o momento.
-
----
-
-## 9. Reglas de contenido
-
-El contenido debe respetar:
-
-- El producto real.
-- El público definido.
-- La moneda correspondiente.
-- El país o mercado correspondiente.
-- Las condiciones del producto.
-- Las fechas relevantes.
-- Los lineamientos del proyecto.
-- El tono establecido.
-
-No mezclar información entre proyectos.
-
-No transformar una característica en un beneficio que no haya sido validado.
-
-No convertir una posibilidad en una promesa.
-
-No presentar resultados como garantizados si el contexto no los respalda.
-
-No inventar:
-
-- Datos.
-- Estadísticas.
-- Testimonios.
-- Casos de éxito.
-- Tasas.
-- Montos.
-- Promociones.
-- Resultados.
-- Funcionalidades.
-
-Cuando una información necesaria no esté disponible:
-
-`[VALIDAR]`
-
----
-
-## 10. Adaptación del contenido al público
-
-El contenido debe adaptarse al público definido en el contexto del proyecto.
-
-Considerar:
-
-- Nivel de conocimiento del producto.
-- Necesidades.
-- Problemas.
-- Motivaciones.
-- Lenguaje habitual.
-- Contexto cultural.
-- País.
-- Moneda.
-- Etapa del usuario.
-
-No asumir conocimientos financieros, técnicos o del producto que el público probablemente no tenga.
-
-Cuando un concepto sea complejo, explicarlo de forma sencilla.
-
----
-
-## 11. Estructura de salida
-
-La respuesta debe adaptarse al formato solicitado.
-
-Cuando corresponda, utilizar esta estructura general:
-
-### Concepto
-
-[Descripción breve de la idea.]
-
-### Objetivo
-
-[Objetivo de la pieza.]
-
-### Formato
-
-[Formato.]
+- Debe corresponder al objetivo de la publicación y a una acción que el usuario **realmente pueda hacer**.
+- Usa los **canales de conversión del contexto** (app, formulario, agencia, etc.). Si el contexto no los indica, escribe `[VALIDAR: canal de conversión]`.
+- Nunca inventes enlaces, URLs ni acciones que el producto no permite.
+- Ejemplos de tipo de CTA (solo si aplican al proyecto): conocer más, descubrir cómo funciona, registrarse, descargar la app, configurar una meta, acercarse a una agencia.
 
 ### Hook
+- Capta la atención y se relaciona directamente con el contenido. Puede ser una pregunta, un problema, una situación cotidiana, un beneficio validado, una afirmación o una idea que genere curiosidad.
+- Sin exageraciones que no puedan sustentarse.
+- Por defecto entrega **una** propuesta clara. Ofrece **hasta 3 opciones** de hook o CTA cuando el usuario las pida o cuando el hook sea decisivo (por ejemplo, en un Reel).
 
+---
+
+## 5. Desarrollo según el formato
+
+El formato define la estructura. No uses una estructura rígida para todos.
+
+### Post
+Concepto · texto de la pieza (breve, si corresponde) · copy / caption · CTA.
+La cantidad de texto se adapta al objetivo y al diseño.
+
+### Carrusel
+Concepto · hook o portada · estructura y texto de cada lámina · cierre · copy / caption · CTA.
+La cantidad de láminas depende de la información necesaria; no hay un número fijo. Organiza el contenido **por lámina**.
+
+### Reel
+Concepto · hook · estructura · escenas o momentos principales · texto en pantalla · voz en off · copy / caption · CTA.
+Siguiendo los lineamientos de formatos: prioriza **personas reales**, usa **voz en off** para desarrollar el mensaje y prevé **subtítulos** durante todo el Reel. Estructura clara, duración acorde al contenido y recursos visuales que refuercen el mensaje. Organiza el contenido **por escena o momento**.
+
+### Testimonio (dentro de un Post, Carrusel o Reel)
+Idea central · estructura · preguntas sugeridas para recoger el testimonio · texto de apoyo · copy · CTA.
+**No inventes testimonios ni atribuyas declaraciones a personas reales.** Trabaja solo con testimonios que el usuario o el contexto aporten; si falta el material, `[VALIDAR]`.
+
+### Tutorial (dentro de un Carrusel o Reel)
+Objetivo · introducción · pasos · texto de apoyo · cierre · copy · CTA.
+Los pasos se basan **únicamente** en funcionalidades o procesos confirmados del producto.
+
+### Texto de la pieza vs. copy
+Cuando haya texto dentro de una pieza gráfica, sepáralo claramente del copy / caption:
+- **Texto de la pieza:** breve, fácil de leer, jerarquizado y compatible con el formato. No llenes las piezas de texto.
+- **Copy / caption:** complementa; no duplica.
+
+---
+
+## 6. Estructura de salida
+
+Adapta la respuesta al formato y a lo que se pidió; no es obligatorio usar todas las secciones. Estructura general:
+
+```
+### Concepto
+[Descripción breve de la idea.]
+
+### Objetivo y formato
+[Objetivo de la pieza y formato.]
+
+### Hook
 [Hook principal.]
 
 ### Desarrollo
-
-[Contenido estructurado según el formato.]
+[Contenido estructurado según el formato: láminas, escenas, pasos…]
 
 ### Texto para la pieza
-
 [Texto que aparecerá dentro de la pieza, cuando corresponda.]
 
-### Copy
+### Dirección visual
+[Indicaciones visuales tomadas de CREATIVE-GUIDELINES.md del proyecto: paleta, tipografía, estilo, personas o imágenes, uso del logo. Solo lo que el documento define; lo que falte, [VALIDAR].]
 
+### Copy
 [Copy o caption.]
 
 ### CTA
-
 [CTA.]
 
-No es obligatorio utilizar todas las secciones.
+### Pendientes de validación
+- [Dato pendiente]
+```
 
-Eliminar las que no sean relevantes para el formato solicitado.
-
----
-
-## 12. Desarrollo según el tipo de solicitud
-
-Si el usuario solicita únicamente un **copy**, entregar únicamente el copy y los elementos necesarios.
-
-Si solicita un **post**, desarrollar el contenido correspondiente.
-
-Si solicita un **carrusel**, desarrollar la estructura completa del carrusel.
-
-Si solicita un **Reel**, desarrollar la estructura o guion correspondiente.
-
-Si solicita un **testimonio**, desarrollar la estructura correspondiente sin inventar declaraciones.
-
-Si solicita un **tutorial**, desarrollar los pasos y textos necesarios.
-
-Si solicita una **pieza gráfica**, desarrollar el contenido que debe aparecer en la pieza.
-
-Si solicita varias alternativas, generar las opciones solicitadas.
-
-No agregar elementos que el usuario no necesita.
+Reglas según lo solicitado:
+- Si piden **solo un copy**, entrega solo el copy y lo necesario (CTA).
+- Si piden **varias alternativas**, entrega las solicitadas.
+- Si piden **una pieza gráfica**, entrega el contenido que debe aparecer en ella y su dirección visual.
+- La **Dirección visual** debe ser breve y referirse a los lineamientos del proyecto (por ejemplo, "usar la paleta principal", "tipografía de títulos según el documento"); no repitas el documento completo. En Carruseles y Reels, si algo cambia por lámina o escena, indícalo en el Desarrollo.
+- Si el usuario pide solo un copy, omite la Dirección visual.
+- Cada `[VALIDAR]` del texto debe aparecer también en "Pendientes de validación". Omite esa sección si no hay pendientes.
 
 ---
 
-## 13. Revisión antes de entregar
+## 7. Ejemplo (ilustrativo)
 
-Antes de presentar el contenido, comprobar:
+Los datos son de muestra y no corresponden a un proyecto real; se usa `[VALIDAR]` donde el contexto no aporta el dato. Muestra el nivel de detalle esperado.
 
-### Contexto
+Entrada (fila del calendario):
 
-- [ ] Corresponde al proyecto correcto.
-- [ ] No se mezclaron datos de otros proyectos.
-- [ ] Se respetó el público.
-- [ ] Se respetó el tono.
-- [ ] Se respetó la moneda.
-- [ ] Se respetaron las condiciones del producto.
-- [ ] Se respetaron los lineamientos disponibles.
+| Fecha | Canal | Pilar | Objetivo | Formato | Tema / idea |
+|---|---|---|---|---|---|
+| 02/10/2026 | Facebook | Educación | Educar | Carrusel | Explicar por qué definir una meta concreta de ahorro facilita mantener el hábito. |
 
-### Contenido
+Salida:
 
-- [ ] Existe un mensaje central claro.
-- [ ] El contenido responde al objetivo.
-- [ ] El formato está correctamente desarrollado.
-- [ ] El contenido es claro y natural.
-- [ ] El copy complementa la pieza.
-- [ ] El CTA es coherente.
-- [ ] No hay información inventada.
-- [ ] Los datos faltantes están marcados como `[VALIDAR]`.
+**Concepto:** una meta clara convierte "quiero ahorrar" en un plan concreto.
+**Objetivo y formato:** educar · Carrusel.
+**Hook (portada):** "¿Ahorrar sin saber para qué? Así es más difícil".
 
-### Producción
+**Desarrollo:**
+- Lámina 1 (portada): el hook.
+- Lámina 2: ahorrar "sin más" suele quedarse en buenas intenciones.
+- Lámina 3: una meta concreta (qué, cuánto, para cuándo) da dirección al ahorro.
+- Lámina 4: ejemplo cotidiano: comparar "quiero ahorrar" con "quiero juntar [VALIDAR: monto y moneda de ejemplo] para [objetivo]".
+- Lámina 5 (cierre): definir tu meta es el primer paso.
 
-- [ ] El texto de la pieza es suficientemente claro.
-- [ ] El contenido está organizado de forma útil para producción.
-- [ ] No hay exceso de texto innecesario.
-- [ ] La estructura corresponde al formato solicitado.
+**Dirección visual:** aplicar la paleta, tipografías y estilo gráfico definidos en `CREATIVE-GUIDELINES.md` del proyecto [en este ejemplo no se detallan por ser ilustrativo]; un solo mensaje por lámina.
+
+**Copy:** "Ahorrar es más fácil cuando sabes para qué. Empieza por ponerle nombre y fecha a tu meta. ¿Cuál es la tuya?"
+**CTA:** [VALIDAR: canal de conversión y acción disponible para el usuario].
+
+### Pendientes de validación
+- Monto y moneda del ejemplo de la lámina 4.
+- Canal de conversión y acción para el CTA.
 
 ---
 
-# Principio central
+## 8. Revisión antes de entregar
 
-El **contexto del proyecto** define la información específica del producto y del público.
+**Contexto**
+- [ ] Corresponde al proyecto correcto y no se mezclaron datos de otros.
+- [ ] Se respetaron público, tono, moneda, condiciones y lineamientos.
+- [ ] La dirección visual sigue el `CREATIVE-GUIDELINES.md` del proyecto correcto, sin colores, tipografías ni estilos inventados ni de otras marcas.
 
-Este Skill transforma una **idea de contenido** en una pieza desarrollada y lista para producción.
+**Contenido**
+- [ ] Hay un mensaje central claro y responde al objetivo (y al tema / idea, si vino de una fila).
+- [ ] El formato es Post, Carrusel o Reel y está bien desarrollado (por lámina o por escena).
+- [ ] Reel: personas reales, voz en off y subtítulos previstos.
+- [ ] El copy complementa la pieza y el CTA es una acción real del producto.
+- [ ] No hay datos, testimonios, promesas ni URLs inventados.
+- [ ] Los datos faltantes están como `[VALIDAR]` y listados al final.
 
-La lógica de trabajo es:
-
-**Contexto del proyecto + Idea → Desarrollo del contenido → Pieza lista para producción**
-
-El contenido debe ser:
-
-**claro + relevante + coherente + accionable**
-
-y debe utilizar únicamente información disponible y validada para el proyecto.
+**Producción**
+- [ ] El texto de la pieza es breve y claro, sin exceso de texto.
+- [ ] La entrega está organizada de forma útil para quien produce.
